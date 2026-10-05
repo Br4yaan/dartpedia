@@ -2,14 +2,14 @@
   ==============================================================
   Projeto: dartpedia001 / Flutter
   Arquivo: lib/main.dart
-  Versão: 0.0.16
+  Versão: 0.0.17
   Descritivo do Código:
-    - Integração da bateria de exercícios com DesafioListaScreen.
+    - Inicialização com navegação para a tela da Aula 04.
   ==============================================================
 */
 
 import 'package:flutter/material.dart';
-import 'desafio_lista.dart';
+import 'screens/layout_screen.dart';
 
 void main() {
   runApp(const MeuApp());
@@ -22,12 +22,12 @@ class MeuApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Bateria de Exercícios',
+      title: 'Aula 04 - Layout Widgets',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const DesafioListaScreen(),
+      home: const LayoutScreen(),
     );
   }
 }
