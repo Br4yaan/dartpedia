@@ -3,9 +3,9 @@
   Projeto: dartpedia001
   Pacote: command_runner
   Arquivo: lib/command_runner.dart
-  Versão: 0.0.2
+  Versão: 0.0.3
   Descritivo do Código:
-    - Lição 08: Exporta HelpCommand juntamente com os módulos anteriores.
+    - Lição 12: Exportação do AppLogger para o projeto principal.
   ==============================================================
 */
 
@@ -16,3 +16,4 @@ export 'src/command_type.dart';
 export 'src/base_command.dart';
 export 'src/wiki_command.dart';
 export 'src/help_command.dart';
+export 'src/logger_config.dart';
