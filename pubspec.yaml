@@ -9,3 +9,5 @@ dependencies:
   http: ^1.2.0
   command_runner:
     path: ./command_runner
+dev_dependencies:
+  test: ^1.32.0
