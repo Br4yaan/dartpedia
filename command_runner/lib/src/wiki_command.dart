@@ -3,9 +3,9 @@
   Projeto: dartpedia001
   Pacote: command_runner
   Arquivo: lib/src/wiki_command.dart
-  Versão: 0.0.0
+  Versão: 0.0.1
   Descritivo do Código:
-    - Lição 05: Classe concreta que herda de BaseCommand, sobrescrevendo atributos e o método execute().
+    - Lição 08: Refatoração para usar StringBuffer na montagem do resultado e sendOutput para flexibilidade.
   ==============================================================
 */
 
@@ -15,7 +15,7 @@ import 'base_command.dart';
 import 'command_type.dart';
 
 class WikiCommand extends BaseCommand {
-  WikiCommand({super.format});
+  WikiCommand({super.format, super.onOutput});
 
   @override
   String get name => 'wiki';
@@ -37,17 +37,19 @@ class WikiCommand extends BaseCommand {
         final data = jsonDecode(response.body) as Map<String, dynamic>;
 
         if (format == OutputFormat.json) {
-          print(jsonEncode({'title': data['title'], 'extract': data['extract']}));
+          sendOutput(jsonEncode({'title': data['title'], 'extract': data['extract']}));
         } else {
-          print('--- ${data['title']} ---');
-          print(data['extract'] ?? 'Nenhum resumo disponível.');
-          print('-----------------------');
+          final buffer = StringBuffer();
+          buffer.writeln('--- ${data['title']} ---');
+          buffer.writeln(data['extract'] ?? 'Nenhum resumo disponível.');
+          buffer.writeln('-----------------------');
+          sendOutput(buffer.toString());
         }
       } else {
-        print('Erro HTTP ${response.statusCode}: Não foi possível obter o artigo.');
+        sendOutput('Erro HTTP ${response.statusCode}: Não foi possível obter o artigo.');
       }
     } catch (e) {
-      print('Erro de conexão ao executar comando: $e');
+      sendOutput('Erro de conexão ao executar comando: $e');
     }
   }
 }
