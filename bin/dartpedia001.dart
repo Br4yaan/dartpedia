@@ -2,18 +2,17 @@
   ==============================================================
   Projeto: dartpedia001
   Arquivo: bin/dartpedia001.dart
-  Versão: 0.0.10
+  Versão: 0.0.11
   Descritivo do Código:
-    - Lição 03: Escreva código assíncrono.
-    - Realiza requisições HTTP assíncronas usando 'http', 'async' e 'await'.
-    - Busca e exibe o resumo de um artigo diretamente da API da Wikipédia.
+    - Lição 04: Refatoração para usar o pacote local reutilizável 'command_runner'.
+    - Consumo assíncrono da API da Wikipédia mantido.
   ==============================================================
 */
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:command_runner/command_runner.dart';
 
-/// Função assíncrona para buscar resumo na Wikipédia
 Future<String> buscarResumoWikipedia(String artigo) async {
   final url = Uri.parse(
     'https://pt.wikipedia.org/api/rest_v1/page/summary/${Uri.encodeComponent(artigo)}',
@@ -36,10 +35,11 @@ Future<String> buscarResumoWikipedia(String artigo) async {
 
 Future<void> main(List<String> arguments) async {
   print('==================================================');
-  print('          DARTPEDIA001 - Versão 0.0.10           ');
+  print('          DARTPEDIA001 - Versão 0.0.11           ');
   print('==================================================\n');
 
-  final termo = arguments.isNotEmpty ? arguments.first : 'Dart_(linguagem_de_programação)';
+  // Chamada da função vinda do pacote local 'command_runner'
+  final termo = ArgsParser.obterTermoBusca(arguments);
 
   print('Buscando informações na Wikipédia sobre: "$termo"...\n');
 
