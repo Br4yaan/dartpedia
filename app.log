@@ -2,3 +2,4 @@
 2026-10-05 22:54:17.391168 [FINE] WikiCommand: Enviando requisição GET para https://pt.wikipedia.org/api/rest_v1/page/summary/Desenvolvimento%20de%20software
 2026-10-05 22:54:18.411091 [INFO] WikiCommand: Resposta HTTP 200 recebida com sucesso.
 2026-10-05 23:18:28.828651 [INFO] WikiCommand: Iniciando busca colorida do artigo: "Linguagem de programação"
+2026-10-06 00:08:21.972615 [INFO] WikiCommand: Iniciando busca do artigo: "Flutter"

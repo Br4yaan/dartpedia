@@ -2,9 +2,9 @@
   ==============================================================
   Projeto: dartpedia001
   Arquivo: bin/dartpedia001.dart
-  Versão: 0.0.18
+  Versão: 0.0.19
   Descritivo do Código:
-    - Lição 06: Captura elegante de exceções customizadas (CommandException) no ponto de entrada da CLI.
+    - Lição 09: Integração com modelo de dados JSON e desestruturação via Pattern Matching.
   ==============================================================
 */
 
@@ -13,7 +13,7 @@ import 'package:command_runner/command_runner.dart';
 Future<void> main(List<String> arguments) async {
   AppLogger.setup();
 
-  print('========== DARTPEDIA001 - Versão 0.0.18 =========='.green.bold);
+  print('========== DARTPEDIA001 - Versão 0.0.19 =========='.green.bold);
   print('');
 
   final wikiCmd = WikiCommand(format: OutputFormat.text);
@@ -26,12 +26,8 @@ Future<void> main(List<String> arguments) async {
       await wikiCmd.execute(arguments);
     }
   } on CommandException catch (e) {
-    print('Erro de Execução: ${e.message}'.red.bold);
-    if (e.statusCode != null) {
-      print('Código de Status: ${e.statusCode}'.yellow);
-    }
-  } catch (e, stackTrace) {
-    print('Erro Inesperado: Ocorreu uma falha não tratada no sistema.'.red.bold);
-    print('Detalhes técnicos: $e'.yellow);
+    print('Erro: ${e.message}'.red.bold);
+  } catch (e) {
+    print('Erro inesperado: $e'.red);
   }
 }
